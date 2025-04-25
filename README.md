@@ -1,2 +1,4 @@
-# mt-ui
-Medicine tracker ui
+
+## Medicine Tracker Web App Project
+
+Version 1.0
