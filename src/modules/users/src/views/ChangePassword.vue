@@ -90,7 +90,7 @@ export default {
       const errors = [];
       const field = "currentPassword";
       if (!this.v$["model"][field].$dirty) return errors;
-      this.v$["model"][field].required.$invalid && errors.push(this.$t("v.text.required"));
+      this.v$["model"][field].required.$invalid && errors.push(this.$t("i18n.v.text.required"));
       this.v$["model"][field].minLength.$invalid &&
         errors.push(this.$t("v.string.minLength", { min: "8" }));
       this.v$["model"][field].maxLength.$invalid &&
@@ -101,7 +101,7 @@ export default {
       const errors = [];
       const field = "newPassword";
       if (!this.v$["model"][field].$dirty) return errors;
-      this.v$["model"][field].required.$invalid && errors.push(this.$t("v.text.required"));
+      this.v$["model"][field].required.$invalid && errors.push(this.$t("i18n.v.text.required"));
       this.v$["model"][field].minLength.$invalid &&
         errors.push(this.$t("v.string.minLength", { min: "8" }));
       this.v$["model"][field].maxLength.$invalid &&
@@ -112,7 +112,7 @@ export default {
       const errors = [];
       const field = "confirmPassword";
       if (!this.v$["model"][field].$dirty) return errors;
-      this.v$["model"][field].required.$invalid && errors.push(this.$t("v.text.required"));
+      this.v$["model"][field].required.$invalid && errors.push(this.$t("i18n.v.text.required"));
       this.v$["model"][field].sameAs.$invalid &&
         errors.push(this.$t("v.password.sameAs"));
       return errors;

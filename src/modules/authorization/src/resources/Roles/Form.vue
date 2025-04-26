@@ -231,9 +231,9 @@ export default {
       const field = "key";
       if (!this.v$["model"][field].$dirty) return errors;
       this.v$["model"][field].required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$["model"][field].maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "60" }));
+        errors.push(this.$t("i18n.v.string.maxLength", { max: "60" }));
       return errors;
     },
     nameErrors() {
@@ -241,9 +241,9 @@ export default {
       const field = "name";
       if (!this.v$["model"][field].$dirty) return errors;
       this.v$["model"][field].required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$["model"][field].maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "100" }));
+        errors.push(this.$t("i18n.v.string.maxLength", { max: "100" }));
       return errors;
     },
     levelErrors() {
@@ -251,11 +251,11 @@ export default {
       const field = "level";
       if (!this.v$["model"][field].$dirty) return errors;
       this.v$["model"][field].required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$["model"][field].numeric.$invalid &&
-        errors.push(this.$t("v.number.numeric"));
+        errors.push(this.$t("i18n.v.number.numeric"));
       this.v$["model"][field].maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "2" }));
+        errors.push(this.$t("i18n.v.string.maxLength", { max: "2" }));
       return errors;
     },
   },

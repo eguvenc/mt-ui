@@ -11,6 +11,10 @@ export default {
   },        
   users,
   login,
+  messages: {
+    passwordResetWrongCode: "Your password reset code is wrong",
+    passwordResetEmail: "Password reset information has been sent to your e-mail"
+  },
   logout: {
     title: "Logout",
     menu: {
@@ -19,8 +23,14 @@ export default {
   },
   forgotPassword: {
     title: "Forgot Password",
+    fields: {
+      username: "E-Mail Address",
+      newPassword: "New Password",
+      newPasswordConfirm: "New Password Confirm",
+    },
     buttons: {
       resetMyPassword: "Reset Password",
+      changeMyPassword: "Change Password",
       backToLogin: "Back to Login"
     }
   },

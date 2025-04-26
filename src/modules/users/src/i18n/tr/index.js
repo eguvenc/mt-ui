@@ -11,6 +11,10 @@ export default {
   },
   users,
   login,
+  messages: {
+    passwordResetWrongCode: "Şifre sıfırlama kodunuz yanlış",
+    passwordResetEmail: "Şifre sıfırlama bilgisi e-postanıza gönderildi"
+  },
   logout: {
     title: "Çıkış",
     menu: {
@@ -19,13 +23,19 @@ export default {
   },
   forgotPassword: {
     title: "Şifremi Unuttum",
+    fields: {
+      username: "E-Posta",
+      newPassword: "Yeni Şifre",
+      newPasswordConfirm: "Yeni Şifre Tekrar",
+    },
     buttons: {
       resetMyPassword: "Şifre Sıfırlama",
+      changeMyPassword: "Şifremi Değiştir",
       backToLogin: "Girişe Dön"
     }
   },
   resetPassword: {
-    title: "Şifre Sıfırlama"
+    title: "Şifre Sıfırlama",
   },
   myAccount: {
     title: "Hesabım",

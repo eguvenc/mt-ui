@@ -54,35 +54,35 @@ export default {
           const errors = [];
           if (!v$['form'].module.$dirty) return errors;
           v$['form'].module.required.$invalid &&
-            errors.push(this.$t("v.text.required"));
+            errors.push(this.$t("i18n.v.text.required"));
           return errors;
         },
         nameErrors: (v$) => {
           const errors = [];
           if (!v$['form'].name.$dirty) return errors;
           v$['form'].name.required.$invalid &&
-            errors.push(this.$t("v.text.required"));
+            errors.push(this.$t("i18n.v.text.required"));
           return errors;
         },
         actionErrors: (v$) => {
           const errors = [];
           if (!v$['form'].action.$dirty) return errors;
           v$['form'].action.required.$invalid &&
-            errors.push(this.$t("v.text.required"));
+            errors.push(this.$t("i18n.v.text.required"));
           return errors;
         },
         routeErrors: (v$) => {
           const errors = [];
           if (!v$['form'].route.$dirty) return errors;
           v$['form'].route.required.$invalid &&
-            errors.push(this.$t("v.text.required"));
+            errors.push(this.$t("i18n.v.text.required"));
           return errors;
         },
         methodErrors: (v$) => {
           const errors = [];
           if (!v$['form'].method.$dirty) return errors;
           v$['form'].method.required.$invalid &&
-            errors.push(this.$t("v.text.required"));
+            errors.push(this.$t("i18n.v.text.required"));
           return errors;
         },
       }

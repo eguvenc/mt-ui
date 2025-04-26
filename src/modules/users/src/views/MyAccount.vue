@@ -100,9 +100,9 @@ export default {
       const field = "firstname";
       if (!this.v$[field].$dirty) return errors;
       this.v$[field].required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$[field].maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "120" }));
+        errors.push(this.$t("i18n.v.string.maxLength", { max: "120" }));
       return errors;
     },
     lastnameErrors() {
@@ -110,9 +110,9 @@ export default {
       const field = "lastname";
       if (!this.v$[field].$dirty) return errors;
       this.v$[field].required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$[field].maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "120" }));
+        errors.push(this.$t("i18n.v.string.maxLength", { max: "120" }));
       return errors;
     },
     emailErrors() {
@@ -120,27 +120,8 @@ export default {
       const field = "email";
       if (!this.v$[field].$dirty) return errors;
       this.v$[field].required.$invalid &&
-        errors.push(this.$t("v.email.required"));
+        errors.push(this.$t("i18n.v.email.required"));
       this.v$[field].email.$invalid && errors.push(this.$t("v.email.invalid"));
-      return errors;
-    },
-    localeErrors() {
-      const errors = [];
-      const field = "locale";
-      this.v$[field].required.$invalid &&
-        errors.push(this.$t("v.text.required"));
-      return errors;
-    },
-    themeColorErrors() {
-      const errors = [];
-      const field = "themeColor";
-      if (!this.v$[field].$dirty) return errors;
-      this.v$[field].required.$invalid &&
-        errors.push(this.$t("v.text.required"));
-      this.v$[field].minLength.$invalid &&
-        errors.push(this.$t("v.string.minLength", { min: "7" }));
-      this.v$[field].maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "7" }));
       return errors;
     },
   },
@@ -178,7 +159,7 @@ export default {
               
               Self.$router.push({ name: "dashboard"});
               setTimeout(function(){
-                Self.$admin.message("success", Self.$t("form.saved"));
+                Self.$admin.message("success", Self.$t("i18n.form.saved"));
               }, 1);
             }
           });

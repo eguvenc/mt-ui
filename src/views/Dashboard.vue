@@ -1,7 +1,7 @@
 <template>
   <v-card variant="flat">
     <v-card-text>
-      {{ $t("messages.welcome")}}
+      {{ $t("i18n.messages.welcome")}}
     </v-card-text>
   </v-card>
 </template>

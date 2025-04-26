@@ -10,8 +10,8 @@ export default {
     userRoles: "Roller",
     createdAtStart: "Oluşturulma Baş.",
     createdAtEnd: "Oluşturulma Bit.",
-    active: "Durum",
-    emailActivation: "E-Posta Aktivasyonu",
+    isActive: "Durum",
+    isEmailActivated: "E-Mail Aktivasyon",
     createdAt: "Oluşturulma",
     themeColor: "Tema Rengi"
   }

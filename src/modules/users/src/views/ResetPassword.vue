@@ -15,7 +15,7 @@
                 :type="showPass ? 'text' : 'password'"
                 v-model="newPassword"
                 name="newPassword"
-                :label="$t('auth.newPassword')"
+                :label="$t('users.forgotPassword.fields.newPassword')"
                 type="password"
                 variant="outlined"
                 :autocomplete="false"
@@ -30,7 +30,7 @@
                 :type="showPass ? 'text' : 'password'"
                 v-model="newPasswordConfirm"
                 name="newPasswordConfirm"
-                :label="$t('auth.newPasswordConfirm')"
+                :label="$t('users.forgotPassword.fields.newPasswordConfirm')"
                 type="password"
                 variant="outlined"
                 :autocomplete="false"
@@ -49,7 +49,7 @@
                       text
                       rounded
                     >
-                      {{ $t("auth.changeMyPassword") }}
+                      {{ $t("users.forgotPassword.buttons.changeMyPassword") }}
                     </v-btn>
                   </div>
                 </v-col>
@@ -65,7 +65,7 @@
               :to="{ name: 'users_login' }"
               style="color: white; font-size: 13px"
             >
-              {{ $t("auth.backToLogin") }}
+              {{ $t("users.forgotPassword.buttons.backToLogin") }}
             </router-link>
           </div>
         </v-col>
@@ -76,8 +76,7 @@
         <v-container style="margin-top: 200px;width:600px;">
           <v-alert
             density="compact"
-            :title="$t('auth.passwordResetWrongCodeTitle')"
-          ><div style="font-size:16px;">{{ $t('auth.passwordResetWrongCode') }}</div>
+          ><div style="font-size:16px;">{{ $t('users.messages.passwordResetWrongCode') }}</div>
           </v-alert>
         </v-container>
       </v-row>
@@ -128,20 +127,20 @@ export default {
       const errors = [];
       if (!this.v$.newPassword.$dirty) return errors;
       this.v$.newPassword.required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$.newPassword.minLength.$invalid &&
-        errors.push(this.$t("v.string.minLength", { min: "8" }));
+        errors.push(this.$t("i18n.v.string.minLength", { min: "8" }));
       this.v$.newPassword.maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "16" }));
+        errors.push(this.$t("i18n.v.string.maxLength", { max: "16" }));
       return errors;
     },
     newPasswordConfirmErrors() {
       const errors = [];
       if (!this.v$.newPasswordConfirm.$dirty) return errors;
       this.v$.newPasswordConfirm.required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$.newPasswordConfirm.sameAs.$invalid &&
-        errors.push(this.$t("v.password.sameAs"));
+        errors.push(this.$t("i18n.v.password.sameAs"));
       return errors;
     },
   },
@@ -159,7 +158,7 @@ export default {
         newPasswordConfirm: this.newPasswordConfirm,
       });
       if (result) {
-        this.$store.getModule("messages").show({ type: "success", message: this.$t("auth.passwordResetEmail") });
+        this.$store.getModule("messages").show({ type: "success", message: this.$t("users.messages.passwordResetEmail") });
         this.$router.push({ name: "login" });
       }
     },

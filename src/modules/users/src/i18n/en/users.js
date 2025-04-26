@@ -10,9 +10,8 @@ export default {
     userRoles: "Roles",
     createdAtStart: "Creation Start",
     createdAtEnd: "Creation End",
-    active: "Active",
-    emailActivation: "E-Mail Activation",
+    isActive: "Status",
+    isEmailActivated: "E-Mail Activation",
     createdAt: "Created At",
-    themeColor: "Theme Color"
   }
 }

@@ -33,12 +33,12 @@
         </v-btn>
 
         <va-boolean-input
-          source="active"
+          source="isActive"
           hide-details
         ></va-boolean-input>
         
         <va-boolean-input 
-          source="emailActivation"
+          source="isEmailActivated"
         >  
         </va-boolean-input>
       </v-col>
@@ -93,8 +93,8 @@ export default {
         lastname: null,
         email: null,
         password: null,
-        active: 0,
-        emailActivation: 0,
+        isActive: 0,
+        isEmailActivated: 0,
         avatar: {
           image: null
         }
@@ -117,38 +117,38 @@ export default {
       const errors = [];
       if (!this.v$['model'].firstname.$dirty) return errors;
       this.v$['model'].firstname.required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$['model'].firstname.minLength.$invalid &&
-        errors.push(this.$t("v.string.minLength", { min: "2" }));
+        errors.push(this.$t("i18n.v.string.minLength", { min: "2" }));
       return errors;
     },
     lastnameErrors() {
       const errors = [];
       if (!this.v$['model'].lastname.$dirty) return errors;
       this.v$['model'].lastname.required.$invalid &&
-        errors.push(this.$t("v.text.required"));
+        errors.push(this.$t("i18n.v.text.required"));
       this.v$['model'].lastname.minLength.$invalid &&
-        errors.push(this.$t("v.string.minLength", { min: "2" }));
+        errors.push(this.$t("i18n.v.string.minLength", { min: "2" }));
       this.v$['model'].lastname.maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "120" }));
+        errors.push(this.$t("i18n.v.string.maxLength", { max: "120" }));
       return errors;
     },
     emailErrors() {
       const errors = [];
       if (!this.v$['model'].email.$dirty) return errors;
       this.v$['model'].email.required.$invalid &&
-        errors.push(this.$t("v.email.required"));
+        errors.push(this.$t("i18n.v.email.required"));
       this.v$["model"].email.email.$invalid && 
-        errors.push(this.$t("v.email.invalid"));
+        errors.push(this.$t("i18n.v.email.invalid"));
       return errors;
     },
     passwordErrors() {
       const errors = [];
       if (!this.v$["model"].password.$dirty) return errors;
       this.v$["model"].password.minLength.$invalid &&
-        errors.push(this.$t("v.string.minLength", { min: "8" }));
+        errors.push(this.$t("i18n.v.string.minLength", { min: "8" }));
       this.v$["model"].password.maxLength.$invalid &&
-        errors.push(this.$t("v.string.maxLength", { max: "16" }));
+        errors.push(this.$t("i18n.v.string.maxLength", { max: "16" }));
       return errors;
     }
   },

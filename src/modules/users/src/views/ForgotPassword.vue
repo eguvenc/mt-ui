@@ -11,7 +11,7 @@
               prepend-icon="mdi-account"
               v-model="email"
               name="email"
-              :label="$t('auth.username')"
+              :label="$t('users.forgotPassword.fields.username')"
               type="text"
               variant="outlined"
               clearable

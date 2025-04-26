@@ -44,7 +44,7 @@ export default {
         },
         { source: "createdAtStart", type: "date" },
         { source: "createdAtEnd", type: "date" },
-        { source: "active", type: "boolean" },
+        { source: "isActivce", type: "boolean" },
       ],
       fields: [
         {
@@ -69,7 +69,7 @@ export default {
           sortable: true,
         },
         {
-          source: "active",
+          source: "isActive",
           sortable: true,
         },
       ],

@@ -31,9 +31,15 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><b>{{ $t('users.users.fields.active') }}</b></td>
+                  <td><b>{{ $t('users.users.fields.isActive') }}</b></td>
                   <td>
-                    <va-field source="active" type="boolean"></va-field>
+                    <va-field source="isActive" type="boolean"></va-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>{{ $t('users.users.fields.isEmailActivated') }}</b></td>
+                  <td>
+                    <va-field source="isEmailActivated" type="boolean"></va-field>
                   </td>
                 </tr>
                 <tr>

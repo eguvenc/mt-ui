@@ -45,14 +45,14 @@ export default {
           const errors = [];
           if (!v$['form'].name.$dirty) return errors;
           v$['form'].name.required.$invalid &&
-            errors.push(this.$t("v.text.required"));
+            errors.push(this.$t("i18n.v.text.required"));
           return errors;
         },
         versionErrors: (v$) => {
           const errors = [];
           if (!v$['form'].version.$dirty) return errors;
           v$['form'].version.required.$invalid &&
-            errors.push(this.$t("v.text.required"));
+            errors.push(this.$t("i18n.v.text.required"));
           return errors;
         },
       }

@@ -1,4 +1,5 @@
 export default {
+  welcome: "Welcome to Dashboard !",
   datatableSettingsSaved: "Your personal settings saved successfully",
   datatableSettingsReset: "Default settings restored successfully",
   formLostChanges: "You did not save your changes. Are you sure want to leave out ?",

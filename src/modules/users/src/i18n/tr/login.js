@@ -7,8 +7,5 @@ export default {
   buttons: {
     signIn: { label: "Giriş" },
     forgotPassword: { label: "Forgot Password" }
-  },
-  messages: {
-    passwordResetEmail: "Şifre sıfırlama bilgisi e-postanıza gönderildi"
   }
 }

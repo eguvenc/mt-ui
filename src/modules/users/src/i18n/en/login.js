@@ -7,8 +7,5 @@ export default {
   buttons: {
     signIn: { label: "Login" },
     forgotPassword: { label: "Forgot Password" }
-  },
-  messages: {
-    passwordResetEmail: "Password reset information has been sent to your e-mail"
-  } 
+  }
 }

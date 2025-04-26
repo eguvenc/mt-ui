@@ -95,7 +95,7 @@ import { storeToRefs } from 'pinia'
 import useAuth from "olobase-admin/src/store/auth";
 import Translation from "@/modules/i18n/src/translation";
 import config from "../@config";
-import logo from '@/assets/images/medical-logo-50px.png';
+import logo from '@/assets/images/medical-logo-60px.png';
 
 export default {
   name: "App",

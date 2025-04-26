@@ -110,7 +110,7 @@ import { useVuelidate } from "@vuelidate/core";
 import LanguageSwitcher from "@/modules/i18n/src/components/LanguageSwitcher.vue";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import { useRoute } from 'vue-router';
-import logo from '@/assets/images/medical-logo-100px.png';
+import logo from '@/assets/images/medical-logo-70px.png';
 
 export default {
   components: { LanguageSwitcher },
