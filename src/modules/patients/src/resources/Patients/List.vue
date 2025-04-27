@@ -19,7 +19,7 @@
     
       <template v-slot:[`field.gender`]="{ item }">
         <div class="d-flex align-center gap-2">
-          <v-icon color="primary" class="mr-2">
+          <v-icon :color="item.gender?.id === 'male' ? 'blue' : 'pink'" class="mr-2">
             {{ item.gender?.id === 'male' ? 'mdi-gender-male' : 'mdi-gender-female' }}
           </v-icon>
           <span>{{ item.gender?.name }}</span>
@@ -28,7 +28,7 @@
 
       <template v-slot:[`field.ageGroup`]="{ item }">
         <div class="d-flex align-center gap-2">
-          <v-icon color="primary" class="mr-2">
+          <v-icon :color="item.ageGroup?.id === 'infant' ? 'warning' : 'green'" class="mr-2">
             {{ item.ageGroup?.id === 'infant' ? 'mdi-baby-face-outline' : 'mdi-human-male' }}
           </v-icon>
           <span>{{ item.ageGroup?.name }}</span>
@@ -41,15 +41,9 @@
             <v-container fluid v-if="item.intakes">
               <v-row dense>
                 <v-col cols="12" v-for="(intake, index) in item.intakes" :key="index">
-                  <v-card class="mb-4" max-width="500">
+                  <v-card class="mb-4" max-width="400">
                     <v-card-title class="d-flex justify-space-between align-center text-subtitle-2">
                       <div class="d-flex align-center gap-3">
-<!--                         <v-img 
-                          :src="getImageUrl(intake.imagePath)" 
-                          alt="intake Image" 
-                          width="50"
-                          class="mr-5"
-                        /> -->
                         <span><strong>{{ intake.medicine.name }}</strong></span>
                       </div>
                       <v-btn size="x-small" color="primary" @click="editIntake(intake)">
@@ -60,9 +54,15 @@
                     <v-card-text class="text-body-2">
                       <v-row dense>
                         <v-col cols="6">
-                          {{ $t('patients.patients.fields.batteryCapacity') }}
+                          <v-icon>mdi-clock-outline</v-icon>
                         </v-col>
                         <v-col cols="6">{{ intake.intakeTime }}</v-col>
+                      </v-row>
+                      <v-row dense>
+                        <v-col cols="6">
+                          <v-icon>mdi-baby-face-outline</v-icon>
+                        </v-col>
+                        <v-col cols="6"><v-icon :color="intake.medicine.canBeUsedForInfants ? 'green' : 'red'">{{ intake.medicine.canBeUsedForInfants ? 'mdi-check' : 'mdi-close' }}</v-icon></v-col>
                       </v-row>
                     </v-card-text>
                   </v-card>
@@ -139,6 +139,13 @@ export default {
   },
   methods: {
     editIntake(intake) {
+      //  
+      //  store list redirect query params we will use it for save
+      //  operations which is located
+      //  in form provider / this.formState.submit(redirect?querParams)
+      //  
+      localStorage.setItem("path", this.$route.path);
+      localStorage.setItem("listQuery", JSON.stringify(this.$route.query));
       this.$router.push("/intakes/" + intake.id + "/edit");
     },
     getImageUrl(logoPath) {

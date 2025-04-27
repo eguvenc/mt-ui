@@ -27,6 +27,10 @@ export default {
   dataiterator: {
     displayingPage: "Displaying page {page} of {pageCount}"
   },
+  swagger: {
+    restApi: "Rest API",
+    openDocs: "Go to  API Docs",
+  },
   pages: {
     list: "{resource}",
     create: "New Record",

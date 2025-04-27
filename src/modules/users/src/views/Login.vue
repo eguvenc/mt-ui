@@ -137,7 +137,7 @@ export default {
       logo,
       showPass: false,
       loading: false,
-      username: "demo@example.com",
+      username: "admin@example.com",
       password: "12345678",
     };
   },

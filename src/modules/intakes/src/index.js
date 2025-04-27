@@ -34,6 +34,8 @@ export default {
       "IntakesEdit": () => import("./resources/Intakes/Edit.vue"),
       "IntakesForm": () => import("./resources/Intakes/Form.vue"),
       "IntakesList": () => import("./resources/Intakes/List.vue"),
+      "IntakesFemaleAdultsList": () => import("./resources/FemaleAdults/List.vue"),
+      "IntakesMaleInfantsList": () => import("./resources/MaleInfants/List.vue"),
     };
 
     return {

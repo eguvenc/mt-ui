@@ -8,7 +8,6 @@
           reference="users"
           :error-messages="userIdErrors"
           clearable
-          return-object
         >
         </va-select-input>
 
@@ -26,25 +25,39 @@
         >
         </va-select-input>
 
-        <v-row class="mt-2">
+        <v-row class="mt-2" v-if="$route.name == 'patients_edit'">
           <v-col cols="12" sm="12" md="12" lg="12">
             <v-data-table :density="getDensity" :items="model.intakes" :headers="intakeHeaders">
 
-              <template v-slot:item.vehicleId="{ item }">
-                <div class="d-flex flex-wrap ga-2">
-                  <v-chip
-                    size="small"
-                    label
-                    color="primary"
-                  >
-                    <v-icon icon="mdi-label" start></v-icon>
-                    {{ item?.userId?.name }}
-                  </v-chip>
+              <template v-slot:top>
+                <v-row>
+                  <v-col>
+                    <h2 class="text-h6">Intakes</h2>
+                  </v-col>
+                  <v-col class="d-flex justify-end">
+                    <v-btn color="primary" @click="addIntake" icon>
+                      <v-icon>mdi-plus</v-icon>
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </template>
+
+              <template v-slot:[`item.medicineId`]="{ item }">
+                <div class="d-flex align-center gap-2">
+                  <v-icon color="primary" class="mr-2">mdi-pill</v-icon>
+                  {{ item.medicineId.name }}
+                </div>
+              </template>
+
+              <template v-slot:[`item.intakeTime`]="{ item }">
+                <div class="d-flex align-center gap-2">
+                  <v-icon color="primary" class="mr-2">mdi-clock-outline</v-icon>
+                  {{ item.intakeTime.name }}
                 </div>
               </template>
 
               <template v-slot:item.action="{ item }">
-                <v-btn icon variant="text" @click="updatePatient(item.id)">
+                <v-btn icon variant="text" @click="editIntake(item.id)">
                   <v-icon size="xsmall">mdi-pencil</v-icon>
                 </v-btn>
                 <v-btn icon variant="text" @click="openDeleteDialog(item.id)">
@@ -58,11 +71,11 @@
         <v-dialog v-model="deleteDialog" max-width="600">
           <v-card>
             <v-card-title class="text-h6">
-              Are you sure this data will be deleted permanently?
+              Are you sure this intake will be deleted permanently ?
             </v-card-title>
             <v-card-actions class="justify-end">
-              <v-btn text @click="cancelDelete">İptal</v-btn>
-              <v-btn color="red-darken-2" text @click="confirmDeletePatient">Sil</v-btn>
+              <v-btn text @click="cancelDelete">Cancel</v-btn>
+              <v-btn color="red-darken-2" text @click="confirmDeleteIntake">Delete</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -76,7 +89,7 @@
 <script>
 import { provide } from 'vue';
 import { useVuelidate } from "@vuelidate/core";
-import { required, email, minLength, maxLength } from "@vuelidate/validators";
+import { required, minLength } from "@vuelidate/validators";
 import config from '@/@config'
 
 export default {
@@ -91,10 +104,6 @@ export default {
   validations() {
     return {
       model: {
-        name: {
-          required,
-          minLength: minLength(2),
-        },
         userId: {
           required,
         },
@@ -116,7 +125,7 @@ export default {
     return {
       q: null,
       deleteDialog: false,
-      selectedPatientId: null,      
+      selectedIntakeId: null,      
       serverItems: [],
       totalItems: 0,
       loadingIntakes: false,
@@ -124,14 +133,13 @@ export default {
       model: {
         id: null,
         userId: null,
-        name: null,
         gender: null,
         ageGroup: null,
         intakes: [],
       },
       intakeHeaders: [
-        { title: "", key: 'medicineName' },
-        { title: "", key: 'intakeTime' },
+        { title: "", key: 'medicineId', sortable: false },
+        { title: "", key: 'intakeTime', sortable: false },
         { title: "", key: 'action', sortable: false }
       ],
     };
@@ -149,6 +157,13 @@ export default {
         errors.push(this.$t("i18n.v.string.minLength", { min: "2" }));
       return errors;
     },
+    userIdErrors() {
+      const errors = [];
+      if (!this.v$['model'].userId.$dirty) return errors;
+      this.v$['model'].userId.required.$invalid &&
+        errors.push(this.$t("i18n.v.text.required"));
+      return errors;
+    },
     genderErrors() {
       const errors = [];
       if (!this.v$['model'].gender.$dirty) return errors;
@@ -163,56 +178,49 @@ export default {
         errors.push(this.$t("i18n.v.text.required"));
       return errors;
     },
-    userIdErrors() {
-      const errors = [];
-      if (!this.v$['model'].userId.$dirty) return errors;
-      this.v$['model'].userId.required.$invalid &&
-        errors.push(this.$t("i18n.v.text.required"));
-      return errors;
-    }
   },
   methods: {
     openDeleteDialog(id) {
-      this.selectedPatientId = id;
+      this.selectedIntakeId = id;
       this.deleteDialog = true;
     },
     cancelDelete() {
-      this.selectedPatientId = null;
+      this.selectedIntakeId = null;
       this.deleteDialog = false;
     },
-    confirmDeletePatient() {
-      if (this.selectedPatientId) {
-        this.deleteModel(this.selectedPatientId);
+    confirmDeleteIntake() {
+      if (this.selectedIntakeId) {
+        this.deleteIntake(this.selectedIntakeId);
       }
       this.deleteDialog = false;
-      this.selectedPatientId = null;
+      this.selectedIntakeId = null;
     },    
-    addIntakeTime() {
+    addIntake() {
       this.$router.push(
         {
-          name: "patients_intakes_create",
+          name: "intakes_create",
           query: { patientId: this.id }
         }
       );
     },
-    updatePatient(id) {
-      this.$router.push('/patients/models/' + id + '/edit?patientId=' + this.id)
+    editIntake(id) {
+      this.$router.push('/intakes/' + id + '/edit?patientId=' + this.id)
     },
-    async deletePatient(id) {
-      await this.$admin.http.delete('/patients/intakes/delete/' + id);
+    async deleteIntake(id) {
+      await this.$admin.http.delete('/intakes/delete/' + id);
       await this.loadCurrentIntakes({ page: 1, itemsPerPage: this.itemsPerPage, search: { q: this.q } });
     },    
     async loadCurrentIntakes ({ page, itemsPerPage, sortBy }) {
       this.loadingIntakes = "primary";
       this.fetchCurrentIntakes({ page, itemsPerPage, sortBy, search: { q: null } }).then(({ items, total }) => {
-        this.model.Intakes = items
+        this.model.intakes = items
         this.loadingIntakes = false
       })
     },
     async fetchCurrentIntakes ({ page, itemsPerPage, sortBy, search }) {
       const start = (page - 1) * itemsPerPage;
       const end = start + itemsPerPage;
-      const response = await this.$admin.http.get('/patiens/intakes/findAllById/' + this.id);
+      const response = await this.$admin.http.get('/intakes/findAllById/' + this.id);
 
       const items = response?.data?.data;
       if (sortBy && sortBy.length) {

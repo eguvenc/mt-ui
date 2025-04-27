@@ -48,7 +48,7 @@
               init-url="/authorization/permissions/findAll"
               :headers="headers"
               :fields="fields"
-              primary-key="permId"
+              primary-key="id"
               items-per-page="25"
               :group-header="$t('authorization.roles.fields.module')"
             >

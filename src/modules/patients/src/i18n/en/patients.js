@@ -7,12 +7,16 @@ export default {
     q: "Search",
     expand: "",
     name: "Name",
+    userId: "User",
     gender: "Gender",
     ageGroup: "Age Group",
   },
+  labels: {
+    editIntake: "Edit Intake",
+  },
   buttons: {
     expand: {
-      label: "Medicines",
+      label: "Intakes",
     }
   }
 }

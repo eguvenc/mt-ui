@@ -5,12 +5,18 @@ export default {
   },
   fields: {
     q: "Search",
-    name: "Name",
     expand: "",
+    name: "Name",
+    userId: "User",
+    gender: "Gender",
+    ageGroup: "Age Group",
+  },
+  labels: {
+    editIntake: "Edit Intake",
   },
   buttons: {
     expand: {
-      label: "Medicines",
+      label: "Intakes",
     }
   }
 }

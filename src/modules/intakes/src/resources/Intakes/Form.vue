@@ -4,6 +4,7 @@
       <v-col lg="6" md="6" sm="12">
 
         <va-select-input
+          v-if="showPatientDropdown"
           source="patientId"
           :error-messages="patientIdErrors"
           reference="patients"
@@ -58,6 +59,7 @@
 
 <script>
 import { provide } from 'vue';
+import { useRoute } from 'vue-router';
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
@@ -67,8 +69,9 @@ export default {
   inheritAttrs: false,
   setup() {
     let vuelidate = useVuelidate();
+    const route = useRoute();
     provide('v$', vuelidate)
-    return { v$: vuelidate }
+    return { v$: vuelidate, route }
   },
   validations() {
     return {
@@ -85,8 +88,30 @@ export default {
       }
     }
   },
+  async created() {
+    if (this.route['query']['patientId']) {
+      this.patientId = this.route['query']['patientId'];
+    }
+    if (this.item && this.item?.patientId?.id !== undefined) {
+      this.patientId = this.route['query']['patientId'];
+    }
+    if (this.patientId) {
+      const response = await this.$admin.http.get("/patients/findOneById/" + this.route['query']['patientId'])
+      if (response?.data?.data?.patientId) {
+        this.model.patientId = response.data.data.patientId;
+      }
+      this.showPatientDropdown = true;
+    }
+    // console.error(this.route.name);
+
+    if (this.route.name == "intakes_create" || this.route.name == "intakes_edit") {
+      this.showPatientDropdown = true;
+    }
+    this.created = true;
+  },
   data() {
     return {
+      showPatientDropdown: false,
       model: {
         id: null,
         patientId: null,
@@ -94,6 +119,11 @@ export default {
         intakeTime: null,
       }
     };
+  },
+  mounted() {
+    if (this.item) {
+      this.model.intakeTime = this.item.intakeTime ?? null;
+    }
   },
   computed: {
     patientIdErrors() {

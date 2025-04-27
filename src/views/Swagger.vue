@@ -8,7 +8,7 @@
       >
         <v-card-text>
           <div class="h1 mb-4">
-            {{ $t("resources.swagger.rest_api") }}
+            {{ $t("i18n.swagger.restApi") }}
           </div>
           <v-btn
             block
@@ -18,7 +18,7 @@
             prepend-icon="mdi-open-in-new"
             variant="flat"
           >
-            {{ $t("resources.swagger.open_docs") }}
+            {{ $t("i18n.swagger.openDocs") }}
           </v-btn>
         </v-card-text>
       </v-card>

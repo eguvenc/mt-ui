@@ -1,7 +1,7 @@
 export default {
   gender: [
     { id: "male", name: "Erkek" },
-    { id: "femail", name: "Kadın" },
+    { id: "female", name: "Kadın" },
   ],
   ageGroup: [
     { id: "infant", name: "Bebek" },

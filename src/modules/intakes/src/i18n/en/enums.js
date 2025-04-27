@@ -1,4 +1,12 @@
 export default {
+  gender: [
+    { id: "male", name: "Male" },
+    { id: "female", name: "Female" },
+  ],
+  ageGroup: [
+    { id: "infant", name: "Infant" },
+    { id: "adult", name: "Adult" },
+  ],
   frequency: [
     { id: "once", name: "Once a Day" },
     { id: "twice", name: "Twice a Day" },
