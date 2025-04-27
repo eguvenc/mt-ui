@@ -8,9 +8,9 @@ export default {
     return adminRole
       ? [
           {
-            icon: "mdi-pill-multiple",
-            text: t("medicines.menu.label"),
-            link: "/medicines?sortBy=name&sortDesc=false",
+            icon: "mdi-medical-cotton-swab",
+            text: t("intakes.menu.label"),
+            link: "/intakes?sortBy=name&sortDesc=false",
             order: 1,
           }
         ]

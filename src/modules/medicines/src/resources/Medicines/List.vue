@@ -20,6 +20,7 @@
           {{ item.frequency.name }}
         </div>
       </template>
+
     </va-data-table-server>
   </va-list>
 </template>

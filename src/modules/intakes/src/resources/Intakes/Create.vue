@@ -1,6 +1,6 @@
 <template>
   <va-create-layout :title="title">
-    <patients-intakes-form :item="item"></patients-intakes-form>
+    <intakes-form :item="item"></intakes-form>
   </va-create-layout>
 </template>
 

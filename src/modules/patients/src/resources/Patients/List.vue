@@ -10,6 +10,13 @@
       :show-expand="true"
       :expand-on-click="true"
     >
+      <template v-slot:[`field.name`]="{ item }">
+        <div class="d-flex align-center gap-2">
+          <v-icon color="primary" class="mr-2">mdi-account-injury</v-icon>
+          {{ item.name }}
+        </div>
+      </template>
+    
       <template v-slot:[`field.gender`]="{ item }">
         <div class="d-flex align-center gap-2">
           <v-icon color="primary" class="mr-2">
