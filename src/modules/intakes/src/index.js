@@ -34,7 +34,11 @@ export default {
       "IntakesEdit": () => import("./resources/Intakes/Edit.vue"),
       "IntakesForm": () => import("./resources/Intakes/Form.vue"),
       "IntakesList": () => import("./resources/Intakes/List.vue"),
+      "IntakesFemaleAdultsCreate": () => import("./resources/Intakes/Create.vue"),
+      "IntakesFemaleAdultsEdit": () => import("./resources/Intakes/Edit.vue"),
       "IntakesFemaleAdultsList": () => import("./resources/FemaleAdults/List.vue"),
+      "IntakesMaleInfantsCreate": () => import("./resources/Intakes/Create.vue"),
+      "IntakesMaleInfantsEdit": () => import("./resources/Intakes/Edit.vue"),
       "IntakesMaleInfantsList": () => import("./resources/MaleInfants/List.vue"),
     };
 

@@ -6,6 +6,9 @@ export default {
   menu: {
     label: "Users",
   },
+  home: {
+    title: "Home",
+  },
   buttons: {
     editRoles: { label: "Edit Roles" }
   },        

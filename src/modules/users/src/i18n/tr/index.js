@@ -6,6 +6,9 @@ export default {
   menu: {
     label: "Kullanıcılar",
   },
+  home: {
+    title: "Anasayfa",
+  },
   buttons: {
     editRoles: { label: "Rolleri Düzenle" }
   },

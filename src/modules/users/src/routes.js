@@ -5,7 +5,7 @@ export default {
         path: "",
         component: () => import('./layouts/Admin.vue'),  // authenticated members
         meta: {
-          title: () => t("users.views.home.title"),
+          title: () => t("users.home.title"),
         },
         children: [
           {
@@ -13,7 +13,7 @@ export default {
             name: "users_myAccount", // requires for translation support
             component: () => import('./views/MyAccount.vue'), // add .vue extension for lazy loading.
             meta: {
-              title: () => t("users.views.myAccount.title"), // requires for document title and breadcrumbs
+              title: () => t("users.myAccount.title"), // requires for document title and breadcrumbs
             },
           },
           {
@@ -21,7 +21,7 @@ export default {
             name: "users_changePassword",
             component: () => import('./views/ChangePassword.vue'),
             meta: {
-              title: () => t("users.views.myPassword.title"),
+              title: () => t("users.changePassword.title"),
             },
           }
         ]
@@ -36,7 +36,7 @@ export default {
             name: "users_login",
             component: () => import('./views/Login.vue'),
             meta: {
-              title: () => t("users.views.login.title"),
+              title: () => t("users.login.title"),
             },
           },
           {
@@ -44,7 +44,7 @@ export default {
             name: "users_forgotPassword",
             component: () => import('./views/ForgotPassword.vue'),
             meta: {
-              title: () => t("users.views.forgotPassword.title"),
+              title: () => t("users.forgotPassword.title"),
             },
           },
           {
@@ -52,7 +52,7 @@ export default {
             name: "users_resetPassword",
             component: () => import('./views/ResetPassword.vue'),
             meta: {
-              title: () => t("users.views.resetPassword.title"),
+              title: () => t("users.resetPassword.title"),
             },
           },
         ],

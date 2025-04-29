@@ -53,7 +53,7 @@ class ModuleLoader {
 
         // **Load Routes**
         if (routes && typeof routes.build === "function") {
-          this.routes.push(...routes.build());
+          this.routes.push(...routes.build(i18nInstance.global.t));
         }
 
         // **Load Stores**

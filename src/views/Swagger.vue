@@ -33,7 +33,7 @@ export default {
       let baseUrl = process.env.API_URL;
       const regex = /\/api$/;
       baseUrl = baseUrl.replace(regex, "");
-      return baseUrl + "/swagger/web/";
+      return baseUrl + "/swagger/";
     }
   },
 };

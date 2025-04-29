@@ -50,6 +50,16 @@
           {{ item.medicineId.name }}
         </div>
       </template>
+
+      <template v-slot:row.actions="{ item }">
+        <va-action-button
+          icon="mdi-pencil"
+          color="primary"
+          text
+          :to="getRoute(item.id)"
+        ></va-action-button>
+      </template>
+      
     </va-data-table-server>
   </va-list>
 </template>
@@ -92,7 +102,17 @@ export default {
     };
   },
   methods: {
+    getRoute(id) {
+      //  
+      //  store list redirect query params we will use it for save
+      //  operations which is located
+      //  in form provider / this.formState.submit(redirect?querParams)
+      //  
+      localStorage.setItem("path", this.$route.path);
+      localStorage.setItem("listQuery", JSON.stringify(this.$route.query));
 
+      return { name: 'intakes_edit', params: { id } }
+    }
   }
 };
 </script>
